@@ -1,0 +1,29 @@
+<div class="main">
+  <h1>{{ componentTitle }}</h1>
+  <label for="addItemInput">What would you like to do today?</label>
+
+  <input
+    #newItem
+    placeholder="add an item"
+    (keyup.enter)="addItem(newItem.value); newItem.value = ''"
+    class="lg-text-input"
+    id="addItemInput"
+  />
+  <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
+
+  <ul>
+    <li *ngFor="let item of items; trackBy: trackByDescription">
+      <span [ngClass]="{ 'completed': item.done }">{{ item.description }}</span>
+
+      <!-- Edit Task -->
+      <button (click)="editItem(item)">Edit</button>
+
+      <!-- Toggle Complete/Incomplete -->
+      <button (click)="toggleDone(item)">{{ item.done ? 'Undo' : 'Complete' }}</button>
+
+      <!-- Delete Task -->
+      <button (click)="deleteItem(item)">Delete</button>
+    </li>
+  </ul>
+</div>
+
