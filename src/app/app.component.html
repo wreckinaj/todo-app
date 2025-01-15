@@ -12,7 +12,7 @@
   <button class="btn-primary" (click)="addItem(newItem.value)">Add</button>
 
   <ul>
-    <li *ngFor="let item of items; trackBy: trackByDescription">
+    <li *ngFor="let item of items; trackBy: trackByDescription" [@slideInOut] [@toggleDone]="item.done ? 'done' : 'active'">
       <span [ngClass]="{ 'completed': item.done }">{{ item.description }}</span>
 
       <!-- Edit Task -->
